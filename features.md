@@ -68,6 +68,7 @@
 - ✅ `aria-label` sur chaque bouton
 - ✅ Cibles tactiles d'environ 62 px, `touch-manipulation`
 - ✅ Aucun débordement horizontal en 390×844
+- ✅ Le plateau passe avant les stats sur téléphone, visible en entier sans scroller
 - ⬜ Répétition automatique au maintien du bouton
 - ⬜ Contrôles au balayage
 

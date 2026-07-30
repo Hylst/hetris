@@ -43,6 +43,9 @@ Première version intégrable à Hylst.Games, partie d'un export brut audité pu
 - Les écouteurs clavier étaient réinstallés cinq fois par seconde, `togglePause` dépendant du
   temps écoulé
 - Deux fuites de timers au démontage (amorçage du déplacement continu, animation d'effacement)
+- Sur téléphone, le plateau arrivait après le score, la réserve, les stats et la difficulté :
+  au lancement on ne voyait aucune aire de jeu sans scroller. Le plateau passe maintenant en
+  premier en dessous de `lg`
 
 ### Supprimé
 - Code mort : champ `startLine` des difficultés, fonction `countGarbage`, paramètre `_dy` de

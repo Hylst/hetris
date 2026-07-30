@@ -872,7 +872,8 @@ export default function App() {
         )}
       >
         {/* colonne de gauche : score, reserve, stats, difficulte */}
-        <div className="flex w-full flex-row flex-wrap justify-center gap-3 sm:w-auto lg:w-52 lg:flex-col lg:gap-4">
+        {/* order-2 : sur telephone le plateau passe devant, sinon on ouvre sur un mur de stats */}
+        <div className="order-2 flex w-full flex-row flex-wrap justify-center gap-3 sm:w-auto lg:order-1 lg:w-52 lg:flex-col lg:gap-4">
           {/* score */}
           <div className="flex-1 rounded-3xl border border-white/10 bg-gradient-to-br from-slate-800/70 to-slate-900/70 p-4 shadow-2xl backdrop-blur-xl">
             <div className="mb-1 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500">Score</div>
@@ -987,7 +988,7 @@ export default function App() {
         </div>
 
         {/* LE PLATEAU */}
-        <div className="relative">
+        <div className="relative order-1 lg:order-2">
           <div
             className={cn(
               "relative rounded-3xl border-[3px] bg-slate-950/80 p-2 shadow-[0_0_80px_rgba(0,0,0,0.7)] backdrop-blur-sm transition-all duration-200",
@@ -1144,7 +1145,7 @@ export default function App() {
         </div>
 
         {/* colonne de droite : prochaines pieces, controles, audio */}
-        <div className="flex w-full flex-row flex-wrap justify-center gap-3 sm:w-auto lg:w-52 lg:flex-col lg:gap-4">
+        <div className="order-3 flex w-full flex-row flex-wrap justify-center gap-3 sm:w-auto lg:w-52 lg:flex-col lg:gap-4">
           {/* les prochaines pieces */}
           <div className="rounded-3xl border border-white/10 bg-gradient-to-br from-slate-800/70 to-slate-900/70 p-4 shadow-2xl backdrop-blur-xl">
             <h3 className="mb-3 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500">

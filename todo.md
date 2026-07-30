@@ -47,6 +47,12 @@ passe QA dans le navigateur (Playwright + Chromium).
   rangées étaient invisibles sans scroller, autant jouer à l'aveugle. La largeur est
   maintenant plafonnée par la hauteur dispo via `min()` et `100vh`. Vérifié : bas du plateau à
   642 px pour 720 px de viewport.
+- [x] **Sur téléphone, on ouvrait sur un mur de stats.** Les trois colonnes s'empilaient dans
+  l'ordre du DOM : score, réserve, stats, difficulté, *puis* le plateau, qui démarrait vers
+  760 px sur un 390x844. Autrement dit, au lancement le joueur ne voyait pas du tout l'aire de
+  jeu et devait scroller. Ajout de `order-1 lg:order-2` sur le plateau (et `order-2 lg:order-1`
+  sur la colonne de gauche) : en dessous de `lg`, le plateau passe devant. Vérifié, plateau
+  entièrement visible de 117 à 753 px sur 844 px de haut, boutons tactiles juste en dessous.
 
 ## ✅ Corrigé, la cohérence et l'intégration
 
