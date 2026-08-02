@@ -3,6 +3,20 @@
 Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/), versionnage
 [SemVer](https://semver.org/lang/fr/).
 
+## [1.1.0] 2026-08-02
+
+### Ajouté
+- Modale « ℹ️ Infos » (bouton dans l'en-tête) expliquant la stack, les graphismes (grille CSS
+  pure, sans Canvas ni sprite), la musique et les sons (Web Audio synthétisé), les
+  interactions (clavier, DAS), l'architecture (moteur pur `engine.ts` séparé du rendu) et les
+  algorithmes notables (sac de 7, wall kicks façon SRS, pièce fantôme). Premier étage du
+  chantier de retrofit décrit dans `todo.md` racine du monorepo, Étape 15 — gabarit initial
+  posé sur Crokinole.
+
+### Vérifié
+- Build propre, modale testée à l'ouverture/fermeture, contenu vérifié, aucune erreur
+  console, aucun débordement horizontal en 390×844 (vérifié explicitement, pas juste supposé).
+
 ## [1.0.0] 2026-07-30
 
 Première version intégrable à Hylst.Games, partie d'un export brut audité puis corrigé.

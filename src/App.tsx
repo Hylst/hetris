@@ -182,6 +182,7 @@ export default function App() {
   const [difficultyState, setDifficultyState] = useState(difficultyRef.current);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [showLevelUp, setShowLevelUp] = useState(false);
+  const [showInfo, setShowInfo] = useState(false);
   const [flashLines, setFlashLines] = useState(false);
   const [comboState, setComboState] = useState(0);
   const [bestScore, setBestScore] = useState(() => Number(localStorage.getItem("hylst-hetris-best") ?? 0));
@@ -830,7 +831,7 @@ export default function App() {
       </div>
 
       {!isFullscreen && (
-        <header className="relative z-10 mx-auto flex max-w-7xl items-center justify-between px-4 pt-4 sm:pt-5">
+        <header className="relative z-10 mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-y-2 px-4 pt-4 sm:pt-5">
           <div>
             <div className="text-[10px] font-bold uppercase tracking-[0.4em] text-cyan-300/80">
               Hylst - Geoffroy
@@ -842,16 +843,54 @@ export default function App() {
               ça tombe bien
             </div>
           </div>
-          <div className="hidden rounded-full border border-white/10 bg-slate-900/70 px-5 py-2 text-xs font-bold uppercase tracking-wider text-slate-300 backdrop-blur-md sm:block">
-            {statusState === "running"
-              ? "Partie en cours"
-              : statusState === "paused"
-              ? "En pause"
-              : statusState === "gameover"
-              ? "Partie terminée"
-              : "Menu principal"}
+          <div className="flex flex-wrap items-center justify-end gap-2">
+            <div className="hidden rounded-full border border-white/10 bg-slate-900/70 px-5 py-2 text-xs font-bold uppercase tracking-wider text-slate-300 backdrop-blur-md sm:block">
+              {statusState === "running"
+                ? "Partie en cours"
+                : statusState === "paused"
+                ? "En pause"
+                : statusState === "gameover"
+                ? "Partie terminée"
+                : "Menu principal"}
+            </div>
+            <button
+              onClick={() => setShowInfo(true)}
+              title="Comment ce jeu a été fait"
+              className="rounded-full border border-white/10 bg-slate-900/70 px-4 py-2 text-xs font-bold uppercase tracking-wider text-slate-300 backdrop-blur-md transition-all hover:bg-slate-800/70 hover:text-white"
+            >
+              ℹ️ Infos
+            </button>
           </div>
         </header>
+      )}
+
+      {/* modale « Comment ce jeu a ete fait » */}
+      {showInfo && (
+        <div
+          className="fixed inset-0 z-[110] flex items-center justify-center bg-black/75 p-4 backdrop-blur"
+          onClick={() => setShowInfo(false)}
+        >
+          <div
+            className="max-h-[85vh] w-full max-w-md overflow-y-auto rounded-3xl border border-white/10 bg-gradient-to-br from-slate-800/95 to-slate-900/95 p-7 shadow-2xl backdrop-blur-xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h3 className="mb-4 text-2xl font-black text-white">Comment ce jeu a été fait</h3>
+            <div className="space-y-3.5 text-sm leading-relaxed text-slate-300">
+              <p><strong className="text-cyan-300">Stack :</strong> React 19, TypeScript 5.9, Tailwind CSS 4, Vite 7, compilé en un seul fichier HTML, aucune dépendance chargée depuis l'extérieur.</p>
+              <p><strong className="text-cyan-300">Graphismes :</strong> aucun Canvas ni sprite, la grille est une simple grille CSS de <code>&lt;div&gt;</code>, une par cellule, colorée avec un dégradé conique Tailwind propre à chaque piece. La lueur des pieces et de l'écran vient de <code>box-shadow</code> et de filtres CSS, pas d'un moteur de rendu.</p>
+              <p><strong className="text-cyan-300">Musique &amp; sons :</strong> entièrement synthétisés en direct avec l'API Web Audio (oscillateurs), aucun fichier audio chargé. La musique s'adapte au niveau, avec des basses de tension et un battement de cœur qui accélère quand la pile de pieces approche du sommet.</p>
+              <p><strong className="text-cyan-300">Interactions :</strong> clavier uniquement (flèches, espace pour la chute rapide, X/Z pour tourner, C pour la réserve). Le maintien d'une touche de déplacement utilise un DAS (délai avant répétition de 170 ms, puis répétition toutes les 50 ms), comme les vrais jeux de chute de pieces.</p>
+              <p><strong className="text-cyan-300">Architecture :</strong> la logique pure (plateau, pieces, collisions, score) vit dans un module séparé sans aucune dépendance au DOM, entièrement testable hors navigateur ; l'affichage et les contrôles vivent dans le composant React.</p>
+              <p><strong className="text-cyan-300">Algorithmes notables :</strong> tirage des pieces par « sac de 7 » (les 7 formes mélangées une fois, jamais deux fois la même piece coup sur coup au-delà d'un sac), rotation par matrice avec correction de position façon SRS (11 décalages testés dans l'ordre pour éviter qu'une piece bloque contre un mur ou un tas), piece fantôme calculée en simulant sa chute jusqu'à collision.</p>
+            </div>
+            <button
+              onClick={() => setShowInfo(false)}
+              className="mt-6 w-full rounded-2xl bg-gradient-to-r from-cyan-400 to-blue-500 py-3 text-center font-black uppercase tracking-wider text-slate-950 transition-all active:scale-95"
+            >
+              Fermer
+            </button>
+          </div>
+        </div>
       )}
 
       {/* bandeau de passage de niveau */}

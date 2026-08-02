@@ -5,6 +5,18 @@ passe QA dans le navigateur (Playwright + Chromium).
 
 ---
 
+## ✅ 2026-08-02 — Retrofit modale « ℹ️ Infos »
+
+- [x] Ajout du bouton « ℹ️ Infos » dans l'en-tête (à côté du statut de partie) et de sa
+  modale (stack, graphismes, musique, interactions, architecture, algorithmes notables).
+  Contenu vérifié pour être spécifique à Hetris (7-bag, wall kicks, DAS, rendu 100% CSS)
+  plutôt que copié du gabarit Crokinole. Vérifié : ouverture/fermeture, aucune erreur
+  console, **aucun débordement horizontal en 390×844 vérifié explicitement** (leçon tirée de
+  Crokinole, voir mémoire `feedback-verification-rigor`). Voir `todo.md` racine du monorepo,
+  Étape 15.
+
+---
+
 ## ✅ Corrigé, les bugs
 
 - [x] **Le déplacement continu n'accélérait jamais.** `startDAS` faisait
