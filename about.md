@@ -30,5 +30,5 @@ Web Audio API à l'exécution. Résultat : un fichier HTML de 300 Ko qui tourne 
 
 ## Contact
 
-- Email : geoffroy.streit@gmail.com
+- Email : geoffroy.streit@ik.me
 - Plateforme : [games.hylst.fr](https://games.hylst.fr/)
